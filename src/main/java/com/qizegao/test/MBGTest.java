@@ -22,5 +22,7 @@ public class MBGTest {
 				callback, warnings);
 		myBatisGenerator.generate(null);
 		System.out.println("执行成功");
+		System.out.println("执行成功");
+		
 	}
 }
