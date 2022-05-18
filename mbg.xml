@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!--用mybatis逆向工程生成-->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		
+		<!-- 去掉生成的结构中多余的注释(可选) -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+		<!-- 配置数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/ssm_crud"
+			userId="root"
+			password="123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 指定javaBean生成的位置 -->
+		<javaModelGenerator targetPackage="com.qizegao.bean"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--指定mapper.xml文件(映射文件)生成的位置 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 指定mapper接口(dao)生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.qizegao.dao" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 指定每个表对应的java类型 -->
+		<!--tableName要和数据库中的表名对应，domainObjectName是java中创建出来的类-->
+		<table tableName="tbl_stu" domainObjectName="Student"></table>
+		<table tableName="tbl_dept" domainObjectName="Department"></table>
+	</context>
+</generatorConfiguration>
